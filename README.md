@@ -2,11 +2,11 @@
 
 A recently aquired Aster CT-80 computer came without the keyboard. As this is 
 a simple 8x8 matrix, and the PS/2 keyboard protocol is supported by the
-Arduino environment, is should be simple to fix. This solution uses a
+Arduino environment, it should be simple to fix. This solution uses a
 Arduino Nano to interpret the PS/2 keyboard and convert it to an address
 for the MT8816 Analog Switch Array having a 16x8 matrix. The required
 matrix is only 8x8, so a smaller array might also work, but the MT8816 
-was easier to obtain.
+is/was easier to obtain.
 
 Because of the similarity between the keyboard hardware of the CT-80 and 
 the Tandy TRS-80 models 3, 4, and 4p, it seemed logical to try this too.
@@ -14,16 +14,19 @@ the Tandy TRS-80 models 3, 4, and 4p, it seemed logical to try this too.
 Having tested it only a model 4p, I assume the software will work as is for
 the other models. The hardware is slightly different, as the 4p only makes 
 the matrix available, while the model 3 and 4 also provide a ground and 5 
-volt line. Whe used with the Model 4p, a proper ground and +5V have to be 
-provided. Providing power via the Arduino with a USB charfer is also an 
+volt line. When used with the Model 4p, a proper ground and +5V have to be 
+provided. Providing power via the Arduino with a USB charger is also an 
 option.
+
+## How does it work
 
 A table is used to convert ASCII to matrix coordinates and another small 
 one to fix the out of order addressing in the MT8816.
 
 The sketch attempts to convert from PS/2 to ASCII and from there to the
 computer specific matrix. Quite a lot of special cases are needed to get
-all characters properly shifted or unshifted.
+all characters properly shifted or unshifted. The intention is to abstract
+those to more tables and smart functions.
 
 For two TRS-80 keys the match is not exact:
 
@@ -44,12 +47,13 @@ commands:
     Onn - open crosspoint nn
     H   - this help
     R   - reset MT8816
+    Taaaa. - type text from the console. This doesn't yet work very well.
 
 ### Remarks on the board
 
 The sketch is tested with a modified v1.0 board for the CT-80. A board for the TRS-80
-Model 3 , 4 and 4p has to be designed. The differences between those should be supported.
-More info and testing is required.
+Model 3 , 4 and 4p could be designed. The differences between those models should be 
+supported. More info and testing is required.
 
 ### Remarks on version 0.8 of the firmware
 
@@ -64,7 +68,7 @@ The board and firmware can be tested from the Arduino IDE, right after programmi
 only a multi-meter:
 
 - Open the Serial Monitor set baud rate to 115200 BAUD. The prompt 
- "PS2Keyboard to Aster CT-80 matrix V0.6" should appear.
+ "PS2Keyboard to Aster TRS-80 3/4/4p matrix V0.8" should appear.
  
 - Type ? &lt;Enter&gt;. The help text should appear.
 
