@@ -23,6 +23,10 @@ volt line. When used with the Model 4p, a proper ground and +5V have to be
 provided. Providing power via the Arduino with a USB charger is also an 
 option for +5V, but a ground line from the 4P is still required.
 
+Note that for the 4P the connector is mirrored, so pin 1 of the cable doesn't 
+match pin 1 on the keyboard print. Maybe the connector is at the solder side?
+ Don't know about the Model 3 and 4.
+
 ![The schematic](keyboardEmuTRS80.kicad_sch.pdf)
 
 ## How does it work
