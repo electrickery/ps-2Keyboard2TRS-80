@@ -7,7 +7,9 @@ Arduino Nano to interpret the PS/2 keyboard and convert it to an address
 for the MT8816 Analog Switch Array which has a 16x8 matrix. The required
 matrix size is only 8x8, so a smaller array might also work, but the MT8816 
 is/was easier to obtain. Apart from the MT8816 and PS/2 connector, no special 
-components are required.
+components are required. 
+<a href="https://github.com/electrickery/ps2keyboard2matrix">The repository 
+for the Aster CT-80 variant</a>. 
 
 Because of the similarity between the keyboard hardware of the CT-80 and 
 the Tandy TRS-80 models 3, 4, and 4p, it seemed logical to try this too.
