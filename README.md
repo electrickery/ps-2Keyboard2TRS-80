@@ -2,22 +2,26 @@
 
 A recently aquired Aster CT-80 computer came without the keyboard. As this is 
 a simple 8x8 matrix, and the PS/2 keyboard protocol is supported by the
-Arduino environment, it should be simple to fix. This solution uses a
+Arduino environment, it should be simple to fix. This solution uses an
 Arduino Nano to interpret the PS/2 keyboard and convert it to an address
-for the MT8816 Analog Switch Array having a 16x8 matrix. The required
-matrix is only 8x8, so a smaller array might also work, but the MT8816 
+for the MT8816 Analog Switch Array which has a 16x8 matrix. The required
+matrix size is only 8x8, so a smaller array might also work, but the MT8816 
 is/was easier to obtain. Apart from the MT8816 and PS/2 connector, no special 
 components are required.
 
 Because of the similarity between the keyboard hardware of the CT-80 and 
 the Tandy TRS-80 models 3, 4, and 4p, it seemed logical to try this too.
 
+![The adapted prototype board](TRS80AdapterProto.jpg)
+
 Having tested it only a model 4p, I assume the software will work as is for
 the other models. The hardware is slightly different, as the 4p only makes 
 the matrix available, while the model 3 and 4 also provide a ground and 5 
 volt line. When used with the Model 4p, a proper ground and +5V have to be 
 provided. Providing power via the Arduino with a USB charger is also an 
-option.
+option for +5V, but a ground line from the 4P is still required.
+
+![The schematic](keyboardEmuTRS80.kicad_sch.pdf)
 
 ## How does it work
 
@@ -53,8 +57,8 @@ commands:
 ### Remarks on the board
 
 The sketch is tested with a modified v1.0 board for the CT-80. A board for the TRS-80
-Model 3 , 4 and 4p could be designed. The differences between those models should be 
-supported. More info and testing is required.
+Model 3 , 4 and 4p could be designed. As I don't have a model 3 or 4, I cannot test this.
+It works for my model 4p, bu the original keyboard is still working...
 
 ### Remarks on version 0.8 of the firmware
 
@@ -98,3 +102,6 @@ Currently I am using Arduino IDE 1.8.19 with the following libraries:
 
 - PS2KeyAdvanced, version 1.0.9 from Paul Carpenter
 - PS2KeyMap, version 1.0.9 from Paul Carpenter
+
+These libraries have the GPL 2.1 license, so this sketch does too. I have no intention to 
+design, produce and sell boards.
